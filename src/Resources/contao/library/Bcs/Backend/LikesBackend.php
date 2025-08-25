@@ -24,9 +24,9 @@ class LikesBackend extends Backend
         // lets make decisions based on the beginning of the tag
         switch($arrTag[0]) {
             // if the tag is what we want, {{simple_inventory::id}}, then lets go
-            case 'test':
-                //$arrTag[1];
-                return "Test Successful!";
+            case 'contao_likes':
+                return '';
+                //return "ID: " . $arrTag[1];
             break;
         }
         
