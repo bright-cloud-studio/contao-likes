@@ -8,6 +8,8 @@ use Contao\Input;
 use Contao\DataContainer;
 use Contao\StringUtil;
 
+use Contao\FrontendUser;
+
 class LikesBackend extends Backend
 {
   
@@ -18,19 +20,22 @@ class LikesBackend extends Backend
             return 'No ID given';
         }
         
-        // break our tag into an array
-        $arrTag = explode("::", $insertTag);
-        
-        // lets make decisions based on the beginning of the tag
-        switch($arrTag[0]) {
-            // if the tag is what we want, {{simple_inventory::id}}, then lets go
-            case 'contao_likes':
-                return '';
-                //return "ID: " . $arrTag[1];
-            break;
+        // Try to get the Member and check if it exists
+        $member = FrontendUser::getInstance();
+        if($member) {
+                
+            $arrTag = explode("::", $insertTag);
+            switch($arrTag[0]) {
+                case 'contao_likes':
+                    
+                    return '<!-- USER ' . $member->id . ' LIKES GALLERY ' .$arrTag[1] . '-->';
+                    
+                break;
+            }
+            
+            return 'Error with processInsertTags function';
+            
         }
-        
-        return 'Error with processInsertTags function';
     }
     
 }
