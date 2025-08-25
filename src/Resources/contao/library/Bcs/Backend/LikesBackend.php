@@ -70,7 +70,7 @@ class LikesBackend extends Backend
 
     
     // Get Members as options for a Select DCA field
-    public function getTests(DataContainer $dc) {
+    public function getLikes(DataContainer $dc) {
         $tests = array();
         $this->import('Database');
         $result = $this->Database->prepare("SELECT * FROM tl_form WHERE formType='test' ORDER BY title ASC")->execute();
