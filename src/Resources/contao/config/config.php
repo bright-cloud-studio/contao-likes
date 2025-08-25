@@ -14,3 +14,4 @@
 
 // Hook when form is submitted
 //$GLOBALS['TL_HOOKS']['processFormData'][]      = array('Bcs\Hooks\FormHooks', 'onSubmitTest');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][]      = array('Bcs\Backend\LikesBackend', 'processInsertTags');
