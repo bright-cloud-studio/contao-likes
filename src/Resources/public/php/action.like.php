@@ -17,8 +17,8 @@
     $myfile = fopen("logs/action_like_".date('m_d_Y_hia').".txt", "w") or die("Unable to open file!");
     
     // Get data from ajax
-    $unique_id = $_POST['assignment_id'];
+    $unique_id = $_POST['unique_id'];
     
-    fwrite($myfile, "SAVING: Query Results: " . $result_update . "\r\n");
+    fwrite($myfile, "Unique ID: " . $unique_id . "\r\n");
     fclose($myfile);
     echo "success";
