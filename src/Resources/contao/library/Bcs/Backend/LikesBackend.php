@@ -28,7 +28,7 @@ class LikesBackend extends Backend
             switch($arrTag[0]) {
                 case 'contao_likes':
                     
-                    return '<!-- USER ' . $member->id . ' LIKES GALLERY ' .$arrTag[1] . '-->';
+                    return '<a style="display: none;" class="contao_like">' . $member->id . ' LIKES GALLERY ' .$arrTag[1] . '</a>';
                     
                 break;
             }
