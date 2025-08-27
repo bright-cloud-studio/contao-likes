@@ -3,6 +3,7 @@
 namespace Bcs\Backend;
 
 use Contao\Backend;
+use Contao\Config;
 use Contao\Image;
 use Contao\Input;
 use Contao\DataContainer;
@@ -28,7 +29,7 @@ class LikesBackend extends Backend
             switch($arrTag[0]) {
                 case 'contao_likes':
                     
-                    return '<a style="display: none;" class="contao_like" data-uid="'.$arrTag[1].'" data-member="'.$member->id.'">' . $member->id . ' LIKES GALLERY ' .$arrTag[1] . '</a>';
+                    return '<a style="display: none;" class="contao_like" data-uid="'.$arrTag[1].'" data-member="'.$member->id.'">' . Config::get('contao_likes_icon'). '</a>';
                     
                 break;
             }
