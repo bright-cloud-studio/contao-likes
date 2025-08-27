@@ -1,5 +1,7 @@
 <?php
 
+
+
 use Contao\DataContainer;
 use Contao\DC_Table;
 
@@ -16,9 +18,9 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['likes'] = array
     'eval'             => array('multiple'=> true, 'mandatory'=>false, 'tl_class'=>'long'),
     'flag'             => DataContainer::SORT_ASC,
     'options_callback' => array('Bcs\Backend\LikesBackend', 'getLikes'),
-    'sql'              => "blob NULL",
     'save_callback' => array
     (
         array('Bcs\Backend\LikesBackend', 'saveCallback')
     ),
+    'sql'              => "blob NULL"
 );
