@@ -3,6 +3,7 @@
 namespace Bcs\Backend;
 
 use Contao\Backend;
+use Contao\Database;
 use Contao\Config;
 use Contao\Image;
 use Contao\Input;
@@ -29,7 +30,23 @@ class LikesBackend extends Backend
             switch($arrTag[0]) {
                 case 'contao_likes':
                     
-                    return '<a style="display: none;" class="contao_like" data-uid="'.$arrTag[1].'" data-member="'.$member->id.'">' . Config::get('contao_likes_icon'). '</a>';
+                    $this_user_liked = false;
+                    $counter = 0;
+                    $this->import('Database');
+		            $result = $this->Database->prepare("SELECT * FROM tl_member WHERE likes LIKE '%".$arrTag[1]."%'")->execute();
+		            while($result->next()) {
+		                $counter++;
+		                
+		                if($result->id == $member->id)
+		                    $this_user_liked = true;
+		                
+		            }
+		           
+                    
+                    if($this_user_liked)
+                        return '<a style="" class="contao_like contao_like_'.$arrTag[1].' liked_by_user" data-uid="'.$arrTag[1].'" data-member="'.$member->id.'">' . Config::get('contao_likes_icon'). '(<span id="like_total_'.$arrTag[1].'">'.$counter.'</span>)</a>';
+                    else
+                        return '<a style="" class="contao_like contao_like_'.$arrTag[1].'" data-uid="'.$arrTag[1].'" data-member="'.$member->id.'">' . Config::get('contao_likes_icon'). '(<span id="like_total_'.$arrTag[1].'">'.$counter.'</span>)</a>';
                     
                 break;
             }
