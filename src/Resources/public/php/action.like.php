@@ -40,8 +40,8 @@
                     $update_db = $dbh->query($update_query);
                     
                     fwrite($myfile, "Update: " . $member_id . "\r\n");
+                    echo "updated";
                 }
-
                 
                 
             } else {
@@ -53,12 +53,12 @@
                 
                 fwrite($myfile, "Update on NULL: " . $member_id . "\r\n");
                 
+                echo "updated";
+                
             }
             
         }
     }
 
     
-    
     fclose($myfile);
-    echo "Success!";
