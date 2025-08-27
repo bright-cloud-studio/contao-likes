@@ -16,7 +16,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['likes'] = array
     'label'            => &$GLOBALS['TL_LANG']['tl_member_group']['likes'],
     'inputType'        => 'checkboxWizard',
     'eval'             => array('multiple'=> true, 'mandatory'=>false, 'tl_class'=>'long'),
-    'flag'             => DataContainer::SORT_ASC,
     'options_callback' => array('Bcs\Backend\LikesBackend', 'getLikes'),
     'save_callback' => array
     (
