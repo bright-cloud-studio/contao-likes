@@ -6,9 +6,9 @@ use Contao\DataContainer;
 use Contao\DC_Table;
 
 /* Extend the tl_user palettes */
-foreach ($GLOBALS['TL_DCA']['tl_member']['palettes'] as $k => $v) {
-  $GLOBALS['TL_DCA']['tl_member']['palettes'][$k] = str_replace('groups;', 'groups;{contao_likes_legend}, likes;', $v);
-}
+//foreach ($GLOBALS['TL_DCA']['tl_member']['palettes'] as $k => $v) {
+//  $GLOBALS['TL_DCA']['tl_member']['palettes'][$k] = str_replace('groups;', 'groups;{contao_likes_legend}, likes;', $v);
+//}
 
 /* Add fields to tl_user */
 $GLOBALS['TL_DCA']['tl_member']['fields']['likes'] = array
