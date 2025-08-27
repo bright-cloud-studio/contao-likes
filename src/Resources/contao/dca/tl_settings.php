@@ -9,6 +9,6 @@ $GLOBALS['TL_DCA']['tl_settings']['fields'] += [
         'label'             => &$GLOBALS['TL_LANG']['tl_settings']['contao_likes_icon'],
         'inputType'         => 'text',
         'default'           => '<i class="fas fa-heart"></i>',
-        'eval'              => ['mandatory' => 'true', 'tl_class' => 'w50'],
+        'eval'              => ['mandatory' => 'true', 'allowHtml' => true, 'tl_class' => 'w50'],
     ]
 ];
