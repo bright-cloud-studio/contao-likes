@@ -17,8 +17,48 @@
     $myfile = fopen("logs/action_like_".date('m_d_Y_hia').".txt", "w") or die("Unable to open file!");
     
     // Get data from ajax
-    $unique_id = $_POST['unique_id'];
+    $uid = $_POST['uid'];
+    $member_id = $_POST['member_id'];
+    fwrite($myfile, "Unique ID: " . $uid . "\r\n");
+    fwrite($myfile, "Member ID: " . $member_id . "\r\n");
     
-    fwrite($myfile, "Unique ID: " . $unique_id . "\r\n");
+    
+    // Get the Member using the ID
+    $member_query =  "SELECT * FROM tl_member WHERE id='".$member_id."'";
+    $member_db = $dbh->query($member_query);
+    if($member_db) {
+        while($member = $member_db->fetch_assoc()) {
+            
+            if($member['likes'] != null) {
+                $likes = unserialize($member['likes']);
+                
+                if (!in_array($uid, $likes)) {
+                    $likes[] = $uid;
+                    $likes = serialize($likes);
+                    
+                    $update_query =  "UPDATE tl_member SET likes='$likes'WHERE id='$member_id'";
+                    $update_db = $dbh->query($update_query);
+                    
+                    fwrite($myfile, "Update: " . $member_id . "\r\n");
+                }
+
+                
+                
+            } else {
+                $likes[] = $uid;
+                $likes = serialize($likes);
+                
+                $update_query =  "UPDATE tl_member SET likes='$likes'WHERE id='$member_id'";
+                $update_db = $dbh->query($update_query);
+                
+                fwrite($myfile, "Update on NULL: " . $member_id . "\r\n");
+                
+            }
+            
+        }
+    }
+
+    
+    
     fclose($myfile);
-    echo "success";
+    echo "Success!";
