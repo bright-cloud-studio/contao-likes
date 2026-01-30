@@ -19,8 +19,8 @@
         "source": "https://github.com/bright-cloud-studio/contao-likes"
     },
     "require":{
-        "php": "^8.1",
-        "contao/core-bundle": "^4.9"
+        "php": "^8.2",
+        "contao/core-bundle": "^5.3"
     },
     "extra":{
         "contao-manager-plugin": "Bcs\\LikesBundle\\ContaoManager\\Plugin"
