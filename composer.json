@@ -20,7 +20,7 @@
     },
     "require":{
         "php": "^8.2",
-        "contao/core-bundle": "^5.3"
+        "contao/core-bundle": "^5.3 || ^5.7"
     },
     "extra":{
         "contao-manager-plugin": "Bcs\\LikesBundle\\ContaoManager\\Plugin"
